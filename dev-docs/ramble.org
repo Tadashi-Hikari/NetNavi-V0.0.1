@@ -10,3 +10,5 @@ if not started
 spawn client or repl
 
 I also need to remember, clojure compiles to js
+
+Changing :main changes my jack in

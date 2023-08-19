@@ -1,11 +1,13 @@
-(ns netnavi.sapphire)
+(ns netnavi.sapphire 
+  (:require [netnavi.util :as util]))
 (require
- '[netnavi.plugins.gpt :as gpt])
+ '[netnavi.plugins.gpt :as gpt]
+ '[netnavi.util :as util])
 
 (defn perpetual-loop []
   (loop []
     (let [input (read-line)]
-      (println (gpt/chat-with-assistant input))
+      (println util/RED (gpt/chat-with-assistant input) util/RESET)
       (recur))))
 
 (perpetual-loop)

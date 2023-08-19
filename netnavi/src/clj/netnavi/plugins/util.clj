@@ -1,4 +1,5 @@
-(ns netnavi.util)
+; This isn't actually for the plugin, but it is clj specific. I am going to make a cljc util
+(ns netnavi.plugins.util)
 (require
  '[clojure.java.shell :as shell]
  '[clojure.java.io :as io]
