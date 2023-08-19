@@ -1,0 +1,12 @@
+How do I want netnavi to launch? It's going to be a big, complex project, so I need to get it out of my head that it will be manageable without tools.
+
+I want to be able to call it from the command line to ask it a question
+- it could be running as a service/daemon at startup, and I'm just calling it via client
+-- This works w/ networking
+* Structure
+Check for running instance (process name or bound port)
+if not started
+- start service
+spawn client or repl
+
+I also need to remember, clojure compiles to js

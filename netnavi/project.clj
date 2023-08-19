@@ -38,7 +38,8 @@
                  [ring/ring-core "1.9.6"]
                  [ring/ring-defaults "0.3.4"]
                  [selmer "1.12.55"]
-                 [thheller/shadow-cljs "2.20.3" :scope "provided"]]
+                 [thheller/shadow-cljs "2.20.3" :scope "provided"]
+                 [net.clojars.wkok/openai-clojure "0.9.0"]]
 
   :min-lein-version "2.0.0"
   
@@ -46,12 +47,14 @@
   :test-paths ["test/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
   :target-path "target/%s/"
-  :main ^:skip-aot netnavi.core
+  #_( ;original main
+     :main ^:skip-aot netnavi.core)
+  :main ^:skip-aot netnavi.sapphire
+  
 
   :plugins [] 
   :clean-targets ^{:protect false}
-  [:target-path "target/cljsbuild"]
-  
+  [:target-path "target/cljsbuild"] 
 
   :profiles
   {:uberjar {:omit-source true
