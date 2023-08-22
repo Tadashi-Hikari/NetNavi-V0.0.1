@@ -1,6 +1,6 @@
 (ns netnavi.sapphire 
   (:require [netnavi.util :as util]
-            [netnavi.assistant :as assistant]))
+            [netnavi.assist :as assistant]))
 (require
  '[netnavi.plugins.gpt :as gpt])
 
@@ -13,4 +13,4 @@
 (println util/GREEN "Sapphire.EXE initalized" util/RESET)
 (perpetual-loop)
 
-(print (:running-log assistant/assistant)) 
+;(print @(:running-log netnavi.plugins.gpt/assistant)) 
