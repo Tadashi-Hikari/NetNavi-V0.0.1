@@ -1,5 +1,6 @@
 (ns netnavi.plugins.gpt
-  (:import [netnavi.assist Assistant]))
+  (:import [netnavi.assist Assistant]) 
+  (:require [netnavi.assist :as assistant]))
 (require 
  '[wkok.openai-clojure.api :as api]
  '[netnavi.assist :as assistant]) 
@@ -9,7 +10,7 @@
 (def netnavi-project-assistant-prep [{:role "system" :content "You are a helpful assistant named Sapphire.EXE. You are helping me with a clojure/clojurescript project that I am working on. The project was created using the command \"lein new luminus netnavi +shadow-cljs, +http-kit, +reitit, +sqlite, +graphql\". Most questions will come from this base frame of reference"}])
 
 ; This should be moved to GPT Module
-(def assistant (Assistant. (atom empty-chat) (atom empty-chat)))
+(def assistant (Assistant. (atom empty-chat)))
 
 (defn format-prompt [prompt]
   (let [new-map {:role "user" :content prompt}]
@@ -38,8 +39,9 @@
 (defn chat-with-assistant 
   "Takes in a string, formats it for GPT, updates the atom! with the string prompt and response. prints response"
   [message]
+  (add-new-message (log-prompt-update! message))
   (log-response-update! (get-in (api/create-chat-completion {:model "gpt-3.5-turbo"
-                                       :messages (add-new-message (log-prompt-update! message))}) [:choices 0 :message :content])))
+                                       :messages @(:running-log assistant)}) [:choices 0 :message :content])))
 
-;(chat-with-assistant "How are you today?")
-;(print assistant)
+(chat-with-assistant "Congratulations. you passed all tests with flying colors")
+(print assistant)
