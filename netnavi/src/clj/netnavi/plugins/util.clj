@@ -12,7 +12,7 @@
     (println "Subprocess output:")
     (println (:out process))))
 
-(run-subprocess "echo \"hello\"")
+;(run-subprocess "echo \"hello\"")
 
 (defn setup-user-environment [])
 
@@ -24,4 +24,4 @@
     (println "File exists")
     (println "File doesn't exist")))
 
-(check-for-config "src/sapphire/core.clj")
+;(check-for-config "src/sapphire/core.clj")
