@@ -13,19 +13,23 @@
 (defn init!
   "reset the assistant back to default by mutating the record"
   []
-  (swap! (:running-log netnavi.plugins.gpt/assistant) (constantly netnavi.plugins.gpt/empty-chat)))
+  (swap! (:running-log netnavi.plugins.gpt/assistant) (constantly netnavi.plugins.gpt/empty-chat))
+  (clear-terminal)
+  (println (format "%sReinitialized%s" util/RED util/RESET)))
 
 (defn init
   "rest the assistant back to default by assigning a new value"
   []
-  (def assistant (Assistant. (atom gpt/empty-chat))))
+  (def assistant (Assistant. (atom gpt/empty-chat)))
+  (clear-terminal)
+  (println (format "%sReinitialized%s" util/RED util/RESET)))
 
 (defn strike-last-input!
   "This form removes the last prompt/response pair"
   []
-  (if (< (count @(:running-log netnavi.plugins.gpt/assistant)) 2)
+  (if (< (count @(:running-log gpt/assistant)) 2)
     (println "Nothing to do!")
-    (swap! (:running-log netnavi.plugins.gpt/assistant) #(subvec % 0 (- (count %) 1)))))
+    (swap! (:running-log gpt/assistant) #(subvec % 0 (- (count %) 2)))))
     
 ; I might want this to return 
 (defn check-for-command? 
