@@ -31,6 +31,9 @@
     (println "Nothing to do!")
     (swap! (:running-log gpt/assistant) #(subvec % 0 (- (count %) 2)))))
     
+(defn exit []
+  (System/exit 0))
+
 ; I might want this to return 
 (defn check-for-command? 
   "Checks if a command exists. If so, it runs the command" 
