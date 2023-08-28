@@ -1,9 +1,9 @@
 (ns netnavi.sapphire 
   (:require [netnavi.util :as util]
             [netnavi.assist :as assistant]
-            [netnavi.plugins.features :as features]))
+            [netnavi.plugins.chatgpt.features :as features]))
 (require
- '[netnavi.plugins.gpt :as gpt])
+ '[netnavi.plugins.chatgpt.gpt :as gpt])
 
 (def assistant-name "Sapphire.EXE")
 

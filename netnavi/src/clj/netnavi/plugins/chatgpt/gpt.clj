@@ -1,4 +1,4 @@
-(ns netnavi.plugins.gpt
+(ns netnavi.plugins.chatgpt.gpt
   (:import [netnavi.assist Assistant]) 
   (:require [netnavi.assist :as assistant]))
 (require 

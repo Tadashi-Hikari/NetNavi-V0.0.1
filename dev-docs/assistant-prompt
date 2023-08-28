@@ -1,1 +1,9 @@
+;promt for working on Sapphire.EXE (Clojure)
 I am using a luminus project with +http-kit +shadow-cljs +graphql +sqlite +reitit
+
+;prompt for feeding in a note attached to the current prompt
+- this essentially acts as the 'memory' or context of the gpt based AI.
+things in my notes are related to my current goals, or I am trying to offload information for a note related to my projects (needs a project reference) - could be numerically tagged and converted (for a NN)
+
+;TODO: Make 'attach' expression
+(slurp "quicknote.md")

@@ -1,6 +1,7 @@
-(ns netnavi.plugins.features
+(ns netnavi.plugins.chatgpt.features
   (:require [netnavi.util :as util] 
-            [netnavi.plugins.gpt :as gpt])
+            [netnavi.plugins.chatgpt.gpt :as gpt]
+            [clojure.java.shell :as shell])
   (:import [netnavi.assist Assistant]))
 
 ;(let [result (clojure.java.shell/sh "firefox")])
@@ -13,7 +14,7 @@
 (defn init!
   "reset the assistant back to default by mutating the record"
   []
-  (swap! (:running-log netnavi.plugins.gpt/assistant) (constantly netnavi.plugins.gpt/empty-chat))
+  (swap! (:running-log gpt/assistant) (constantly gpt/empty-chat))
   (clear-terminal)
   (println (format "%sReinitialized%s" util/RED util/RESET)))
 
@@ -30,7 +31,16 @@
   (if (< (count @(:running-log gpt/assistant)) 2)
     (println "Nothing to do!")
     (swap! (:running-log gpt/assistant) #(subvec % 0 (- (count %) 2)))))
-    
+
+(defn print-last-prompt []
+  (println (last @(:running-log gpt/assistant))))
+
+(defn help []
+  (println (keys (ns-publics 'netnavi.plugins.chatgpt.features))))
+
+(defn bash []
+  (shell/sh "bash"))
+
 (defn exit []
   (System/exit 0))
 
@@ -38,7 +48,7 @@
 (defn check-for-command? 
   "Checks if a command exists. If so, it runs the command" 
   [prompt] 
-  (let [resolved (resolve (symbol "netnavi.plugins.features" prompt))]
+  (let [resolved (resolve (symbol "netnavi.plugins.chagpt.features" prompt))]
     (if resolved
      (do 
        (println "Command" prompt "executed")
