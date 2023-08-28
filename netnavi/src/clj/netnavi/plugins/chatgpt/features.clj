@@ -48,7 +48,7 @@
 (defn check-for-command? 
   "Checks if a command exists. If so, it runs the command" 
   [prompt] 
-  (let [resolved (resolve (symbol "netnavi.plugins.chagpt.features" prompt))]
+  (let [resolved (resolve (symbol "netnavi.plugins.chatgpt.features" prompt))]
     (if resolved
      (do 
        (println "Command" prompt "executed")
