@@ -1,4 +1,4 @@
-(ns netnavi.sapphire 
+(ns netnavi.sapphire
   (:require [netnavi.util :as util]
             [netnavi.assist :as assistant]
             [netnavi.plugins.chatgpt.features :as features]))
@@ -7,10 +7,10 @@
 
 (def assistant-name "Sapphire.EXE")
 
-(defn perpetual-loop 
+(defn perpetual-loop
   "The main entry point to a NetNavi"
   []
-  (loop [] 
+  (loop []
     (print (format "%sWhat would you like to say to %s:%s" util/GREEN assistant-name util/RESET) "")
     ; Needed, otherwise print won't print before (read-line)
     (flush)
@@ -20,7 +20,7 @@
           nil
           (do (println util/line)
               (println util/RED (gpt/chat-with-assistant input) util/RESET)
-              (println util/line))))) 
+              (println util/line)))))
     (recur)))
 
 ; ----- START PROGRAM HERE -----
@@ -28,4 +28,4 @@
 (println util/line)
 (perpetual-loop)
 
-;(print @(:running-log netnavi.plugins.gpt/assistant)) 
+;(print @(:running-log netnavi.plugins.gpt/assistant))
