@@ -1,4 +1,10 @@
-dev-docs/ramble.org
-.clj-kondo/
-.lsp/
+# IDE specifics
+.clj-kondo
+.lsp
+
+# Documentation related stuff
+dev-docs/*
+!dev-docs/assistant-prompt
+
+# Used for referencing other projects
 portal/*
